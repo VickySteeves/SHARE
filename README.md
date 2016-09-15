@@ -39,12 +39,19 @@ Once in the `share` virtual environment, install the necessary requirements.
     python manage.py migrate
     python manage.py createsuperuser
 
+
+## If docker-compose can't connect [Ubuntu 16.04]
+`sudo adduser username docker`
+`exec sudo login -f username`
+Navigate into the directory, activate the virtual environment again, and rerun the steps starting with `docker-compose` above. 
+
+
 ## Run
-Run the API server
+Run the API server -- leave running in it's own terminal window
 
     python manage.py runserver
     
-Run Celery
+Run Celery -- leave running in it's own terminal window
 
     python manage.py celery worker -l DEBUG
 
@@ -56,7 +63,7 @@ Harvest data from providers, for example
     ./manage.py harvest com.nature --async
     ./manage.py harvest io.osf --async
 
-Pass data to elasticsearch with `runbot`. Rerunning this command will get the most recently harvested data. This can take a minute or two to finish.
+Pass data to elasticsearch with `runbot`. Rerunning this command will get the most recently harvested data. This can take a minute or two to finish. Leave running in it's own terminal window
 
     ./manage.py runbot elasticsearch
 
